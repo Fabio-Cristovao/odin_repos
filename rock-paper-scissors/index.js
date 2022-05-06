@@ -1,8 +1,31 @@
+
+const roundWinner = gameRound();
+let userWinCounter = 0;
+let pcWinCounter = 0;
+while (userWinCounter < 5 || pcWinCounter < 5) {
+   game(roundWinner)
+}
+function game(roundWinner) {
+
+
+   if (roundWinner === "user") {
+      userWinCounter++;
+   } else if (roundWinner === "pc") {
+      pcWinCounter++;
+   }
+
+   return (console.log(userWinCounter, pcWinCounter));
+
+}
+
+game(roundWinner);
+
 function gameRound(computerChoice, userChoice) {
+
    console.log(computerChoice);
    console.log(userChoice)
 
-   let result;
+   let roundWinner;
 
    if (computerChoice === userChoice) {
       result = "It's a tie!"
@@ -20,14 +43,27 @@ function gameRound(computerChoice, userChoice) {
       result = "You win!"
    }
 
-   return console.log(result);
-}
-function computerChoice() {
+   if (result === "You win!") {
+      roundWinner = "user";
+   } else if (result === "Pc wins!") {
+      roundWinner = "pc";
+   } else if (result === "It's a tie!") {
+      roundWinner = "tie";
+   }
 
+   return console.log(roundWinner);
+}
+
+const userPlay = userChoice();
+const pcPlay = computerChoice();
+
+gameRound(pcPlay, userPlay)
+
+function computerChoice() {
    // genarate a random number to assign th options too
 
    let randomNum = Math.floor(Math.random() * 3);
-   console.log(randomNum);
+   //console.log(randomNum);
 
    let pcWeapon;
 
@@ -45,13 +81,14 @@ function computerChoice() {
          break;
    }
 
-   console.log(pcWeapon)
+   //console.log(pcWeapon)
    return pcWeapon
 }
 
 function userChoice() {
-   userInput = prompt('Choose you weapon:').toLowerCase();
-   console.log(userInput)
+   let userInput = prompt('Choose you weapon:').toLowerCase();
+   //console.log(userInput)
+   let userWeapon;
 
    switch (userInput) {
       case 'rock':
@@ -68,16 +105,5 @@ function userChoice() {
    }
    return userWeapon
 }
-
-const userPlay = userChoice()
-const pcPlay = computerChoice()
-
-console.log(gameRound(pcPlay, userPlay));
-
-
-
-
-/* function game(computerChoice, userChoice) {
-} */
 
 
