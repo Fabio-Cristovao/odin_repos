@@ -1,63 +1,66 @@
 
-const roundWinner = gameRound();
-let userWinCounter = 0;
-let pcWinCounter = 0;
-while (userWinCounter < 5 || pcWinCounter < 5) {
-   game(roundWinner)
-}
-function game(roundWinner) {
 
+function gameRound(pcPlay, userPlay) {
 
-   if (roundWinner === "user") {
-      userWinCounter++;
-   } else if (roundWinner === "pc") {
-      pcWinCounter++;
-   }
+   /* console.log(pcPlay);
+   console.log(userPlay) */
 
-   return (console.log(userWinCounter, pcWinCounter));
+   //let roundWinner;
 
-}
-
-game(roundWinner);
-
-function gameRound(computerChoice, userChoice) {
-
-   console.log(computerChoice);
-   console.log(userChoice)
-
-   let roundWinner;
-
-   if (computerChoice === userChoice) {
+   if (pcPlay === userPlay) {
       result = "It's a tie!"
-   } else if (computerChoice === 'Rock' && userChoice === "Scissors") {
+   } else if (pcPlay === 'Rock' && userPlay === "Scissors") {
       result = "Pc wins!"
-   } else if (computerChoice === 'Rock' && userChoice === "Paper") {
+   } else if (pcPlay === 'Rock' && userPlay === "Paper") {
       result = "You win!"
-   } else if (computerChoice === 'Paper' && userChoice === "Scissors") {
+   } else if (pcPlay === 'Paper' && userPlay === "Scissors") {
       result = "You win!"
-   } else if (computerChoice === 'Paper' && userChoice === "Rock") {
+   } else if (pcPlay === 'Paper' && userPlay === "Rock") {
       result = "Pc win!"
-   } else if (computerChoice === 'Scissors' && userChoice === "Paper") {
+   } else if (pcPlay === 'Scissors' && userPlay === "Paper") {
       result = "Pc win!"
-   } else if (computerChoice === 'Scissors' && userChoice === "Rock") {
+   } else if (pcPlay === 'Scissors' && userPlay === "Rock") {
       result = "You win!"
    }
 
-   if (result === "You win!") {
+   /* if (result === "You win!") {
       roundWinner = "user";
    } else if (result === "Pc wins!") {
       roundWinner = "pc";
    } else if (result === "It's a tie!") {
       roundWinner = "tie";
-   }
+   } */
 
-   return console.log(roundWinner);
+   return result
 }
 
 const userPlay = userChoice();
 const pcPlay = computerChoice();
 
-gameRound(pcPlay, userPlay)
+//console.log(gameRound(pcPlay, userPlay))
+
+
+const roundWinner = gameRound(pcPlay, userPlay);
+
+console.log(roundWinner)
+
+
+
+function game(roundWinner) {
+   console.log(roundWinner)
+
+   let userWinCounter = 0;
+   let pcWinCounter = 0;
+
+   if (roundWinner === "user") {
+      console.log('user wins')
+   } else if (roundWinner === 'pc') {
+      console.log('pc wins')
+   }
+};
+
+game(roundWinner);
+
 
 function computerChoice() {
    // genarate a random number to assign th options too
