@@ -1,3 +1,4 @@
+// win counter to get the winner after a 5 round game
 
 let userWinCounter = 0;
 let pcWinCounter = 0;
@@ -9,9 +10,9 @@ for (let index = 1; index < 6; index++) {
 
    let roundWinner = gameRound(pcPlay, userPlay);
 
-   if (roundWinner === "You win!") {
+   if (roundWinner === "User") {
       userWinCounter++;
-   } else if (roundWinner === "Pc wins!") {
+   } else if (roundWinner === "Pc") {
       pcWinCounter++
    } else {
       userWinCounter;
@@ -20,15 +21,19 @@ for (let index = 1; index < 6; index++) {
    console.log(`${index} round. Result: ${userWinCounter} vs ${pcWinCounter}`)
 };
 
+// winner declaration
+
 let winner;
 
 if (userWinCounter > pcWinCounter) {
-   winner = "The winner is the user"
+   winner = "The winner is the user";
 } else {
-   winner = "The winner is the pc!"
+   winner = "The winner is the pc!";
 }
 
-console.log(winner)
+console.log(winner);
+
+// function declarations
 
 function computerChoice() {
    // genarate a random number to assign th options too
@@ -79,23 +84,23 @@ function userChoice() {
 
 function gameRound(pcPlay, userPlay) {
 
-   let result
+   let result;
 
    if (pcPlay === userPlay) {
-      result = "It's a tie!"
+      result = "It's a tie!";
    } else if (pcPlay === 'Rock' && userPlay === "Scissors") {
-      result = "Pc wins!"
+      result = "Pc";
    } else if (pcPlay === 'Rock' && userPlay === "Paper") {
-      result = "You win!"
+      result = "User";
    } else if (pcPlay === 'Paper' && userPlay === "Scissors") {
-      result = "You win!"
+      result = "Pc";
    } else if (pcPlay === 'Paper' && userPlay === "Rock") {
-      result = "Pc wins!"
+      result = "User";
    } else if (pcPlay === 'Scissors' && userPlay === "Paper") {
-      result = "Pc wins!"
+      result = "Pc";
    } else if (pcPlay === 'Scissors' && userPlay === "Rock") {
-      result = "You win!"
+      result = "User";
    }
 
-   return result
+   return result;
 }
