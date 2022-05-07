@@ -1,66 +1,34 @@
 
+let userWinCounter = 0;
+let pcWinCounter = 0;
 
-function gameRound(pcPlay, userPlay) {
+for (let index = 1; index < 6; index++) {
 
-   /* console.log(pcPlay);
-   console.log(userPlay) */
+   const userPlay = userChoice();
+   const pcPlay = computerChoice();
 
-   //let roundWinner;
+   let roundWinner = gameRound(pcPlay, userPlay);
 
-   if (pcPlay === userPlay) {
-      result = "It's a tie!"
-   } else if (pcPlay === 'Rock' && userPlay === "Scissors") {
-      result = "Pc wins!"
-   } else if (pcPlay === 'Rock' && userPlay === "Paper") {
-      result = "You win!"
-   } else if (pcPlay === 'Paper' && userPlay === "Scissors") {
-      result = "You win!"
-   } else if (pcPlay === 'Paper' && userPlay === "Rock") {
-      result = "Pc win!"
-   } else if (pcPlay === 'Scissors' && userPlay === "Paper") {
-      result = "Pc win!"
-   } else if (pcPlay === 'Scissors' && userPlay === "Rock") {
-      result = "You win!"
+   if (roundWinner === "You win!") {
+      userWinCounter++;
+   } else if (roundWinner === "Pc wins!") {
+      pcWinCounter++
+   } else {
+      userWinCounter;
+      pcWinCounter;
    }
-
-   /* if (result === "You win!") {
-      roundWinner = "user";
-   } else if (result === "Pc wins!") {
-      roundWinner = "pc";
-   } else if (result === "It's a tie!") {
-      roundWinner = "tie";
-   } */
-
-   return result
-}
-
-const userPlay = userChoice();
-const pcPlay = computerChoice();
-
-//console.log(gameRound(pcPlay, userPlay))
-
-
-const roundWinner = gameRound(pcPlay, userPlay);
-
-console.log(roundWinner)
-
-
-
-function game(roundWinner) {
-   console.log(roundWinner)
-
-   let userWinCounter = 0;
-   let pcWinCounter = 0;
-
-   if (roundWinner === "user") {
-      console.log('user wins')
-   } else if (roundWinner === 'pc') {
-      console.log('pc wins')
-   }
+   console.log(`${index} round. Result: ${userWinCounter} vs ${pcWinCounter}`)
 };
 
-game(roundWinner);
+let winner;
 
+if (userWinCounter > pcWinCounter) {
+   winner = "The winner is the user"
+} else {
+   winner = "The winner is the pc!"
+}
+
+console.log(winner)
 
 function computerChoice() {
    // genarate a random number to assign th options too
@@ -109,4 +77,25 @@ function userChoice() {
    return userWeapon
 }
 
+function gameRound(pcPlay, userPlay) {
 
+   let result
+
+   if (pcPlay === userPlay) {
+      result = "It's a tie!"
+   } else if (pcPlay === 'Rock' && userPlay === "Scissors") {
+      result = "Pc wins!"
+   } else if (pcPlay === 'Rock' && userPlay === "Paper") {
+      result = "You win!"
+   } else if (pcPlay === 'Paper' && userPlay === "Scissors") {
+      result = "You win!"
+   } else if (pcPlay === 'Paper' && userPlay === "Rock") {
+      result = "Pc wins!"
+   } else if (pcPlay === 'Scissors' && userPlay === "Paper") {
+      result = "Pc wins!"
+   } else if (pcPlay === 'Scissors' && userPlay === "Rock") {
+      result = "You win!"
+   }
+
+   return result
+}
