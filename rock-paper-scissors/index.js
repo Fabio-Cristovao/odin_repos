@@ -7,6 +7,9 @@ function game() {
    let rock = document.querySelector('.rock');
    let paper = document.querySelector('.paper');
    let scissors = document.querySelector('.scissors');
+   let roundWinner = document.querySelector('.result');
+   let pcRounds = document.querySelector('.pc-score');
+   let playerRounds = document.querySelector('.player-score');
 
    function playGame() {
 
@@ -14,15 +17,32 @@ function game() {
       console.log(playerOptions);
 
       playerOptions.forEach(option => {
+
          option.addEventListener('click', function (e) {
 
-            const computerChoice = getPcChoice();
-            const playerChoice = e.target.className;
+            let computerChoice = getPcChoice();
+            let playerChoice = e.target.className;
             console.log(computerChoice, playerChoice);
 
             const winner = getRoundWinner(computerChoice, playerChoice);
+            roundWinner.innerText = winner;
+
+            if (winner == 'PC') {
+               pcScore++;
+
+            } else if (winner == 'Player') {
+               playerScore++;
+            }
+
             console.log(winner);
+            console.log(pcScore, playerScore);
+            playerRounds.innerText = `Score Player: ${playerScore}`;
+            pcRounds.innerText = `Score Computer: ${pcScore}`;
+            moves++;
+
+
          }, false)
+
       })
 
       function getPcChoice() {
@@ -38,13 +58,13 @@ function game() {
          if (pc == player) {
             result = 'Draw!'
          } else if (pc == 'rock' && player == 'scissors') {
-            result = 'PC Wins!';
+            result = 'PC';
          } else if (pc == 'scissors' && player == 'paper') {
-            result = 'PC Wins!';
+            result = 'PC';
          } else if (pc == 'paper' && player == 'rock') {
-            result = 'PC Wins!';
+            result = 'PC';
          } else {
-            result = 'Player Wins!'
+            result = 'Player';
          }
 
          return result;
