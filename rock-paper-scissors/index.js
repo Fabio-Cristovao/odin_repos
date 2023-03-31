@@ -1,106 +1,65 @@
-// win counter to get the winner after a 5 round game
+function game() {
 
-let userWinCounter = 0;
-let pcWinCounter = 0;
+   let playerScore = 0;
+   let pcScore = 0;
+   let moves = 0;
 
-for (let index = 1; index < 6; index++) {
+   let rock = document.querySelector('.rock');
+   let paper = document.querySelector('.paper');
+   let scissors = document.querySelector('.scissors');
 
-   const userPlay = userChoice();
-   const pcPlay = computerChoice();
+   function playGame() {
 
-   let roundWinner = gameRound(pcPlay, userPlay);
+      let playerOptions = [rock, paper, scissors];
+      console.log(playerOptions);
 
-   if (roundWinner === "User") {
-      userWinCounter++;
-   } else if (roundWinner === "Pc") {
-      pcWinCounter++
-   } else {
-      userWinCounter;
-      pcWinCounter;
-   }
-   console.log(`${index} round. Result: ${userWinCounter} vs ${pcWinCounter}`)
-};
+      playerOptions.forEach(option => {
+         option.addEventListener('click', function (e) {
 
-// winner declaration
+            const computerChoice = getPcChoice();
+            const playerChoice = e.target.className;
+            console.log(computerChoice, playerChoice);
 
-let winner;
+            const winner = getRoundWinner(computerChoice, playerChoice);
+            console.log(winner);
+         }, false)
+      })
 
-if (userWinCounter > pcWinCounter) {
-   winner = "The winner is the user";
-} else {
-   winner = "The winner is the pc!";
-}
+      function getPcChoice() {
+         let pcOptions = ['rock', 'paper', 'scissors'];
+         const randomOption = Math.floor(Math.random() * 3);
+         const pcChoice = pcOptions[randomOption];
+         return pcChoice;
+      }
 
-console.log(winner);
+      function getRoundWinner(pc, player) {
+         let result;
 
-// function declarations
+         if (pc == player) {
+            result = 'Draw!'
+         } else if (pc == 'rock' && player == 'scissors') {
+            result = 'PC Wins!';
+         } else if (pc == 'scissors' && player == 'paper') {
+            result = 'PC Wins!';
+         } else if (pc == 'paper' && player == 'rock') {
+            result = 'PC Wins!';
+         } else {
+            result = 'Player Wins!'
+         }
 
-function computerChoice() {
-   // genarate a random number to assign th options too
+         return result;
 
-   let randomNum = Math.floor(Math.random() * 3);
-   //console.log(randomNum);
-
-   let pcWeapon;
-
-   switch (randomNum) {
-      case 0:
-         pcWeapon = 'Rock'
-         break;
-      case 1:
-         pcWeapon = 'Paper'
-         break;
-      case 2:
-         pcWeapon = 'Scissors'
-         break;
-      default:
-         break;
+      }
    }
 
-   //console.log(pcWeapon)
-   return pcWeapon
+   playGame();
+
+
+
 }
 
-function userChoice() {
-   let userInput = prompt('Choose you weapon:').toLowerCase();
-   //console.log(userInput)
-   let userWeapon;
+game();
 
-   switch (userInput) {
-      case 'rock':
-         userWeapon = 'Rock'
-         break;
-      case 'paper':
-         userWeapon = 'Paper'
-         break;
-      case 'scissors':
-         userWeapon = 'Scissors'
-         break;
-      default: console.log('Please choose of the options: rock. paper, or scissors ')
-         break;
-   }
-   return userWeapon
-}
 
-function gameRound(pcPlay, userPlay) {
 
-   let result;
 
-   if (pcPlay === userPlay) {
-      result = "It's a tie!";
-   } else if (pcPlay === 'Rock' && userPlay === "Scissors") {
-      result = "Pc";
-   } else if (pcPlay === 'Rock' && userPlay === "Paper") {
-      result = "User";
-   } else if (pcPlay === 'Paper' && userPlay === "Scissors") {
-      result = "Pc";
-   } else if (pcPlay === 'Paper' && userPlay === "Rock") {
-      result = "User";
-   } else if (pcPlay === 'Scissors' && userPlay === "Paper") {
-      result = "Pc";
-   } else if (pcPlay === 'Scissors' && userPlay === "Rock") {
-      result = "User";
-   }
-
-   return result;
-}
