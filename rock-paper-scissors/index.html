@@ -12,9 +12,8 @@
          }
 
          body {
-            width: 50%;
-            max-width: 800px;
-            min-width: 480px;
+            width: 100vw;
+            max-width: 850px;
             margin: 0 auto;
          }
 
@@ -23,6 +22,7 @@
             padding: 3px;
          }
       </style>
+      <link rel="stylesheet" href="./index.css">
    </head>
 
    <body>
@@ -43,19 +43,44 @@
       </div> -->
 
       <div class="container">
-         <h1>Rock, Paper, Scissors Game</h1>
-         <div class="score">
-            <div class="player-score"></div>
-            <div class="pc-score"></div>
+         <h1 class="main-title">Rock, Paper, Scissors Game</h1>
+         <div class="game-info-container">
+            <div class="score">
+               <h3>Score</h3>
+               <div class="player-score">
+                  <p></p>
+               </div>
+               <div class="pc-score">
+                  <p></p>
+               </div>
+            </div>
+            <div class="moves-container">
+               <div class="moves">Moves: 0</div>
+               <div class="moves-left">Moves left: 10</div>
+            </div>
          </div>
-         <div class="moves">Moves: 0</div>
-         <div class="moves-left">Moves left: 10</div>
-         <div class="option">
-            <button class="rock">Rock</button>
-            <button class="scissors">Scissors</button>
-            <button class="paper">Paper</button>
+
+         <h2>Your Move: </h2>
+
+         <div class="option-container row">
+            <div class="option col col-4">
+               <button class="rock">
+                  <img class="option-image" src="./assets/rock.png" alt="">
+               </button>
+            </div>
+            <div class="option col col-4">
+               <button class="scissors">
+                  <img class="option-image" src="./assets/scissors.png" alt="">
+               </button>
+            </div>
+            <div class="option col col-4">
+               <button class="paper">
+                  <img class="option-image" src="./assets/paper.png" alt="">
+               </button>
+            </div>
          </div>
-         <div class="result">
+
+         <div class="result-container">
             <p>Result</p>
          </div>
 

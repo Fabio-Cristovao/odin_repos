@@ -7,9 +7,9 @@ function game() {
    let rock = document.querySelector('.rock');
    let paper = document.querySelector('.paper');
    let scissors = document.querySelector('.scissors');
-   let roundWinner = document.querySelector('.result');
-   let pcRounds = document.querySelector('.pc-score');
-   let playerRounds = document.querySelector('.player-score');
+   let roundWinner = document.querySelector('.result-container');
+   let pcRounds = document.querySelector('.pc-score p');
+   let playerRounds = document.querySelector('.player-score p');
 
    function playGame() {
 
