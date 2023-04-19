@@ -21,7 +21,20 @@ function game() {
          option.addEventListener('click', function (e) {
 
             let computerChoice = getPcChoice();
-            let playerChoice = e.target.className;
+            let playerChoice = ""
+            console.log(e.target);
+
+            if (e.target.className === "rock option-image") {
+               playerChoice = "rock"
+            }
+
+            if (e.target.className === "scissors option-image") {
+               playerChoice = "scissors"
+            }
+
+            if (e.target.className === "paper option-image") {
+               playerChoice = "paper"
+            }
             console.log(computerChoice, playerChoice);
 
             const winner = getRoundWinner(computerChoice, playerChoice);

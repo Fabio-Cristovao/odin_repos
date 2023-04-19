@@ -64,6 +64,7 @@
     border-radius: 8px;
     margin: 20px auto;
     border: black solid 2px;
+    padding-bottom: 30px;
 }
 
 .main-title {
@@ -107,4 +108,11 @@
     scale: 110%;
     transition: 0.155s;
     cursor: pointer;
+}
+
+.result-container {
+    margin: 20px 30px;
+    font-weight: bold;
+    font-size: 35px;
+    transition: fade out 0.4s;
 }
