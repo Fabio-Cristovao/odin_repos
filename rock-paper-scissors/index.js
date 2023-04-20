@@ -8,8 +8,20 @@ function game() {
    let paper = document.querySelector('.paper');
    let scissors = document.querySelector('.scissors');
    let roundWinner = document.querySelector('.result-container');
+   let gameWinner = document.querySelector(".game-winner-container");
    let pcRounds = document.querySelector('.pc-score p');
    let playerRounds = document.querySelector('.player-score p');
+   let movesText = document.querySelector(".moves");
+
+   function displayPlayAgainButton() {
+      let playAgainBtn = document.createElement("button");
+      gameWinner.appendChild(playAgainBtn);
+      playAgainBtn.innerText = "Play Again";
+      playAgainBtn.classList.add("play-again-btn");
+      playAgainBtn.addEventListener("click", (e) => {
+         location.reload();
+      }, false)
+   }
 
    function playGame() {
 
@@ -47,15 +59,29 @@ function game() {
                playerScore++;
             }
 
+            moves++;
+            movesText.innerText = `Moves: ${moves}`;
+
             console.log(winner);
             console.log(pcScore, playerScore);
             playerRounds.innerText = `Score Player: ${playerScore}`;
             pcRounds.innerText = `Score Computer: ${pcScore}`;
-            moves++;
 
+            if (playerScore === 5) {
+               gameWinner.innerText = "Player Won the Game!"
+            } else if (pcScore == 5) {
+               gameWinner.innerText = "Computer Won the Game!"
+            }
 
+            if (playerScore == 5 || pcScore == 5) {
+
+               rock.classList.add("disabled")
+               scissors.classList.add("disabled")
+               paper.classList.add("disabled")
+
+               displayPlayAgainButton();
+            }
          }, false)
-
       })
 
       function getPcChoice() {
@@ -79,16 +105,11 @@ function game() {
          } else {
             result = 'Player';
          }
-
          return result;
 
       }
    }
-
    playGame();
-
-
-
 }
 
 game();
